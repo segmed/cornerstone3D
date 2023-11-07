@@ -1,7 +1,7 @@
 {
-  "name": "root",
+  "name": "@segmed/cornerstonejs",
   "description": "Cornerstone.js Monorepo Root",
-  "private": true,
+  "private": false,
   "workspaces": [
     "packages/*"
   ],
@@ -164,5 +164,6 @@
     "not op_mini all"
   ],
   "dependencies": {},
-  "resolutions": {}
+  "resolutions": {},
+  "version": "2.7.3-segmed"
 }
