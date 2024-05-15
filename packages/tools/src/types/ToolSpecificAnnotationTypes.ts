@@ -35,6 +35,7 @@ export interface RectangleROIAnnotation extends Annotation {
           projectionPoints?: Types.Point3[];
           projectionPointsImageIds?: string[];
         };
+    color?: string;
   };
 }
 
