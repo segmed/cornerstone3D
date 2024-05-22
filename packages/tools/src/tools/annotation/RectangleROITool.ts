@@ -166,7 +166,6 @@ class RectangleROITool extends AnnotationTool {
     );
 
     const FrameOfReferenceUID = viewport.getFrameOfReferenceUID();
-    console.log('frameofreferenceuid', FrameOfReferenceUID);
 
     const annotation = {
       invalidated: true,
@@ -200,6 +199,7 @@ class RectangleROITool extends AnnotationTool {
           activeHandleIndex: null,
         },
         cachedStats: {},
+        color: 'white',
       },
     };
 
@@ -359,10 +359,6 @@ class RectangleROITool extends AnnotationTool {
       this.editData;
     const { data } = annotation;
 
-    if (newAnnotation && !hasMoved) {
-      return;
-    }
-
     data.handles.activeHandleIndex = null;
 
     this._deactivateModify(element);
@@ -385,7 +381,7 @@ class RectangleROITool extends AnnotationTool {
 
     triggerAnnotationRenderForViewportIds(renderingEngine, viewportIdsToRender);
 
-    if (newAnnotation) {
+    if (newAnnotation || !this.isDrawing) {
       const eventType = Events.ANNOTATION_COMPLETED;
 
       const eventDetail: AnnotationCompletedEventDetail = {
@@ -668,7 +664,9 @@ class RectangleROITool extends AnnotationTool {
 
       const lineWidth = this.getStyle('lineWidth', styleSpecifier, annotation);
       const lineDash = this.getStyle('lineDash', styleSpecifier, annotation);
-      const color = this.getStyle('color', styleSpecifier, annotation);
+      const color = annotation.data.color
+        ? annotation.data.color
+        : this.getStyle('color', styleSpecifier, annotation);
 
       const { viewPlaneNormal, viewUp } = viewport.getCamera();
 

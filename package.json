@@ -1,7 +1,7 @@
 {
-  "name": "@segmed/cornerstonejs",
+  "name": "root",
   "description": "Cornerstone.js Monorepo Root",
-  "private": false,
+  "private": true,
   "workspaces": [
     "packages/*"
   ],
@@ -149,7 +149,10 @@
     "webpack-dev-server": "^4.13.3",
     "webpack-merge": "5.8.0",
     "worker-loader": "^3.0.8",
-    "xml2js": "^0.5.0"
+    "xml2js": "^0.5.0",
+    "@cornerstonejs/core": "1.27.3",
+    "@cornerstonejs/streaming-image-volume-loader": "1.27.3",
+    "@cornerstonejs/tools": "1.27.3"
   },
   "lint-staged": {
     "packages/**/*.{ts,js,jsx,tsx,json,md,css}": [
@@ -165,5 +168,7 @@
   ],
   "dependencies": {},
   "resolutions": {},
-  "version": "2.7.3-segmed"
+  "volta": {
+    "node": "18.19.1"
+  }
 }
